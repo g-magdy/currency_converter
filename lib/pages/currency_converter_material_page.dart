@@ -5,6 +5,13 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    const border = OutlineInputBorder(
+      borderSide: BorderSide(color: Color(0xFF000000)),
+      borderRadius: BorderRadius.all(
+        Radius.circular(40),
+      ),
+    );
+
     return const Scaffold(
       backgroundColor: Colors.blueGrey,
       body: Center(
@@ -28,10 +35,8 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
                 prefixIconColor: Colors.black,
                 hintText: "Please Go Ahead ",
                 hintStyle: TextStyle(color: Colors.black26),
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Color(0xFF000000)),
-                  borderRadius: BorderRadius.all(Radius.circular(40)),
-                ),
+                focusedBorder: border,
+                enabledBorder: border,
               ),
             ),
           ],
