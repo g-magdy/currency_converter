@@ -1,3 +1,4 @@
+import './pages/currency_converter_material_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -16,11 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp( // global navigation (Only one)
-      home: Scaffold( // one local space/page stuff (More than one)
-        body: Center(
-          child: Text("Hello George Magdy"),
-        ) 
-        ),
+      home: CurrencyConverterMaterialPage(),
     );
   }
 }
