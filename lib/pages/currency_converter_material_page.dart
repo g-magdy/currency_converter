@@ -53,7 +53,7 @@ class _CurrencyConverterMaterialPageState
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "${result != 0 ? result.toStringAsFixed(2) : result.toStringAsFixed(0)} EGP",
+                "${result != result.toInt() ? result.toStringAsFixed(3) : result.toStringAsFixed(0)} EGP",
                 style: const TextStyle(
                   fontSize: 45,
                   fontWeight: FontWeight.bold,
@@ -61,6 +61,13 @@ class _CurrencyConverterMaterialPageState
                 ),
               ),
               TextField(
+                onChanged: (value) => setState(() {
+                  if (value != "") {
+                    result = double.parse(value) * 48;
+                  } else {
+                    result = 0;
+                  }
+                }),
                 controller: textEditingController,
                 cursorColor: Colors.white,
                 style: const TextStyle(color: Colors.black),
@@ -75,25 +82,6 @@ class _CurrencyConverterMaterialPageState
                   enabledBorder: border,
                 ),
                 keyboardType: TextInputType.number,
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  //* this setState function is what triggers the rebuild
-                  //* of the changed widget
-                  setState(() {
-                    result = double.parse(textEditingController.text) * 50;
-                  });
-                },
-                style: ElevatedButton.styleFrom(
-                  elevation: 15,
-                  backgroundColor: Colors.black,
-                  foregroundColor: Colors.white,
-                  minimumSize: const Size(double.infinity, 50),
-                ),
-                child: const Text("Convert"),
               ),
             ],
           ),
