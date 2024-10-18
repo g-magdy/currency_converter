@@ -1,10 +1,4 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-
-// 1. Create a variable that stores the converted currency values
-// 2. create a function that multiplies the input value by (x)
-// 3. store the result
-// 4. display the result
 
 class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
@@ -18,6 +12,20 @@ class _CurrencyConverterMaterialPageState
     extends State<CurrencyConverterMaterialPage> {
   double result = 0;
   final TextEditingController textEditingController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    // init everythin here (after super.initstate)
+  }
+
+  @override
+  void dispose() {
+    // dispose of controllers here (before super.initstate)
+    // avoid memory leaks
+    textEditingController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -39,21 +47,20 @@ class _CurrencyConverterMaterialPageState
         ),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              "$result EGP",
-              style: const TextStyle(
-                fontSize: 45,
-                fontWeight: FontWeight.bold,
-                color: Colors.white,
+        child: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                "${result != 0 ? result.toStringAsFixed(2) : result.toStringAsFixed(0)} EGP",
+                style: const TextStyle(
+                  fontSize: 45,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
               ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(8.0),
-              margin: const EdgeInsets.all(8.0),
-              child: TextField(
+              TextField(
                 controller: textEditingController,
                 cursorColor: Colors.white,
                 style: const TextStyle(color: Colors.black),
@@ -69,10 +76,10 @@ class _CurrencyConverterMaterialPageState
                 ),
                 keyboardType: TextInputType.number,
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(15.0),
-              child: ElevatedButton(
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
                 onPressed: () {
                   //* this setState function is what triggers the rebuild
                   //* of the changed widget
@@ -88,8 +95,8 @@ class _CurrencyConverterMaterialPageState
                 ),
                 child: const Text("Convert"),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
