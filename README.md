@@ -1,16 +1,31 @@
-# currency_converter
+# 🪙 currency_converter 💵
+A minimal flutter project .. just to learn ... input the price in US Dollars and get the result in EGP
 
-A new Flutter project.
 
-## Getting Started
+# Demo 
 
-This project is a starting point for a Flutter application.
+[Demo Video](https://github.com/user-attachments/assets/8b2e5a06-3367-4d5d-a789-1315046f87f3)
 
-A few resources to get you started if this is your first Flutter project:
+### Prerequisites
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+Make sure you have Flutter installed. If you haven't installed it yet, follow the [Flutter installation guide](https://flutter.dev/docs/get-started/install).
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Installation
+
+1. Clone the repository:
+
+    ```bash
+    git clone https://github.com/g-magdy/currency_converter.git
+    cd currency_converter
+    ```
+2. Get Dependencies
+    ```bash
+    flutter pub get
+    ```
+3. Run App
+    ```bash
+    flutter run
+    ```
+
+Enjoy
