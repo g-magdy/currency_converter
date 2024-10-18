@@ -6,14 +6,21 @@ import 'package:flutter/material.dart';
 // 3. store the result
 // 4. display the result
 
-class CurrencyConverterMaterialPage extends StatelessWidget {
+class CurrencyConverterMaterialPage extends StatefulWidget {
   const CurrencyConverterMaterialPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    double result = 0;
-    final TextEditingController textEditingController = TextEditingController();
+  State<CurrencyConverterMaterialPage> createState() =>
+      _CurrencyConverterMaterialPageState();
+}
 
+class _CurrencyConverterMaterialPageState
+    extends State<CurrencyConverterMaterialPage> {
+  double result = 0;
+  final TextEditingController textEditingController = TextEditingController();
+
+  @override
+  Widget build(BuildContext context) {
     const border = OutlineInputBorder(
       borderSide: BorderSide(color: Color(0xFF000000)),
       borderRadius: BorderRadius.all(
@@ -36,11 +43,12 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              result.toString(),
+              "$result EGP",
               style: const TextStyle(
-                  fontSize: 45,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white),
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
+              ),
             ),
             Container(
               padding: const EdgeInsets.all(8.0),
@@ -66,9 +74,11 @@ class CurrencyConverterMaterialPage extends StatelessWidget {
               padding: const EdgeInsets.all(15.0),
               child: ElevatedButton(
                 onPressed: () {
-                  if (kDebugMode) {
+                  //* this setState function is what triggers the rebuild
+                  //* of the changed widget
+                  setState(() {
                     result = double.parse(textEditingController.text) * 50;
-                  }
+                  });
                 },
                 style: ElevatedButton.styleFrom(
                   elevation: 15,
